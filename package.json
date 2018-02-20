@@ -4,16 +4,11 @@
   "description": "a discord bot for lg to track activity.",
   "main": "index.js",
   "engines": {
-    "node": "8.x",
-    "npm": "*"
+    "node": "8.9.1"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/smhood/LGDiscordBotV2.git"
+    "start": "node index.js",
+    "test": "node test.js"
   },
   "keywords": [
     "heroku",
