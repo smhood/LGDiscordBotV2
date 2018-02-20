@@ -20,6 +20,7 @@
     "url": "https://github.com/smhood/LGDiscordBotV2/issues"
   },
   "dependencies": {
-    "discord.js": "^11.3.0"
+    "discord.js": "^11.3.0",
+    "discord.js-commando": "github:discordjs/Commando#11.2"
   }
 }

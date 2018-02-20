@@ -1,15 +1,34 @@
-const Discord = require('discord.js');
-const client = new Discord.Client();
+const { CommandoClient } = require('discord.js-commando');
+const path = require('path');
 
-//test
-client.on('ready', () => {
-  console.log('I am ready!');
+const client = new CommandoClient({
+  commandPrefix: process.env.PREFIX,
+  owner: '206136363836243968',
+  disableEveryone: true
 });
 
-client.on('message', message => {
-  if (message.content === 'ping') {
-    message.reply('pong' + process.env.PREFIX);
-  }
-});
+client.registry
+    .registerDefaultTypes()
+    .registerGroups([
+        ['activity', 'Commands dedicated to viewing activity.']
+    ])
+    .registerDefaultGroups()
+    .registerDefaultCommands(
+      {
+        ping: false,
+        eval: false,
+        enable: false,
+        disable: false,
+        reload: false,
+        load: false,
+        unload: false,
+        groups: false
+      })
+    .registerCommandsIn(path.join(__dirname, 'commands'));
 
-client.login(process.env.TOKEN);
+    client.on('ready', () => {
+      console.log('Logged in!');
+      client.user.setActivity('Monitoring');
+  });
+
+  client.login(process.env.TOKEN);
