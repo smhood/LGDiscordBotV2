@@ -7,8 +7,9 @@ client.on('ready', () => {
 });
 
 client.on('message', message => {
+  message.channel.send(process.env.PREFIX);
   if (!message.content.startsWith(process.env.PREFIX)) return;
-  return msg.channel.send('pong');
+  return message.channel.send('pong');
 });
 
 client.login(process.env.TOKEN);
