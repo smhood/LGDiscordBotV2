@@ -1,0 +1,30 @@
+{
+  "name": "lg-discord-bot",
+  "version": "1.0.0",
+  "description": "a discord bot for lg to track activity.",
+  "main": "index.js",
+  "engines": {
+    "node": "8.x",
+    "npm": "*"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/smhood/LGDiscordBotV2.git"
+  },
+  "keywords": [
+    "heroku",
+    "discord.js"
+  ],
+  "author": "varius",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/smhood/LGDiscordBotV2/issues"
+  },
+  "dependencies": {
+    "discord.js": "^11.3.0"
+  }
+}

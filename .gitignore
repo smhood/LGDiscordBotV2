@@ -1,9 +1,34 @@
+# Numerous always-ignore extensions
+*.diff
+*.err
+*.orig
+*.log
+*.rej
+*.swo
+*.swp
+*.vi
+*~
+*.sass-cache
+
+# OS or Editor folders
+.DS_Store
+.cache
+.project
+.settings
+.tmproj
+nbproject
+Thumbs.db
+
+# Node modules
+/node_modules
+
+# Coveralls
+coverage
+
 # Logs
 logs
 *.log
 npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
 
 # Runtime data
 pids
@@ -23,9 +48,6 @@ coverage
 # Grunt intermediate storage (http://gruntjs.com/creating-plugins#storing-task-files)
 .grunt
 
-# Bower dependency directory (https://bower.io/)
-bower_components
-
 # node-waf configuration
 .lock-wscript
 
@@ -33,11 +55,8 @@ bower_components
 build/Release
 
 # Dependency directories
-node_modules/
-jspm_packages/
-
-# Typescript v1 declaration files
-typings/
+node_modules
+jspm_packages
 
 # Optional npm cache directory
 .npm
@@ -54,6 +73,5 @@ typings/
 # Yarn Integrity file
 .yarn-integrity
 
-# dotenv environment variables file
+# Heroku Env
 .env
-
