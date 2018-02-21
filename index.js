@@ -43,33 +43,29 @@ client.registry
           console.log(err);
         }
         if(docs.length > 0){
-          console.log(message.author.username);
-          console.log(message.member.roles.map(role => role.name));
-          // let member = {
-          //   userName: docs.userName,
-          //   postCount: docs.postCount + 1,
-          //   groups: docs.groups
-          // }
-          // dbo.collection("members").insertOne(member, function(err, res){
-          //   if(err){
-          //     console.log(err);
-          //   }
-          // });
-          // return;
+          let member = {
+            userName: docs.userName,
+            postCount: docs.postCount + 1,
+            groups: docs.groups
+          }
+          dbo.collection("members").insertOne(member, function(err, res){
+            if(err){
+              console.log(err);
+            }
+          });
+          return;
         }
         else{
-          console.log(message.author.username);
-          console.log(message.member.roles.map(role => role.name));
-          // let member = {
-          //   userName: message.author.username,
-          //   postCount: 1,
-          //   groups: message.member.roles.map(role => role.name)
-          // }
-          // dbo.collection("members").insertOne(member, function(err, res){
-          //   if(err){
-          //     console.log(err);
-          //   }
-          // });
+          let member = {
+            userName: message.author.username,
+            postCount: 1,
+            groups: message.member.roles.map(role => role.name)
+          }
+          dbo.collection("members").insertOne(member, function(err, res){
+            if(err){
+              console.log(err);
+            }
+          });
           return;
         }
       });
