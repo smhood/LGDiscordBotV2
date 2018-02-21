@@ -5,7 +5,7 @@ const assert = require('assert');
 const url = `mongodb://${process.env.DBUSER}:${process.env.DBPASS}@ds243798.mlab.com:43798/lg-discord-activity`;
 
 // Database Name
-const client = {};
+let client = {};
 
 function connectDB() {
   // Use connect method to connect to the server
@@ -13,7 +13,6 @@ function connectDB() {
     assert.equal(null, err);
     console.log("Connected successfully to server");
     this.client = client;
-    console.log(client);
   });
 }
 
