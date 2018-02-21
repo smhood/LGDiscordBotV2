@@ -13,7 +13,8 @@ client.registry
     .registerDefaultTypes()
     .registerGroups([
         ['activity', 'Commands dedicated to viewing activity.'],
-        ['general', 'Commands dedicated for general use.']
+        ['general', 'Commands dedicated for general use.'],
+        ['admin', 'Commands dedicated for admin privileges.']
     ])
     .registerDefaultGroups()
     .registerDefaultCommands(
