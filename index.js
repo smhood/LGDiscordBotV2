@@ -43,7 +43,7 @@ client.registry
     db.collection('members').findAndModify(
       { userName: message.author.username.toLowerCase() },
       [],
-      { $inc: { postCount: 1 }, $set: { groups: message.member.roles.map(role => role.name)} },
+      { $inc: { postCount: 1 }, $set: { groups: message.member.roles.map(role => role.name.toLowerCase())} },
       {new: true, upsert: true}, 
       function(err, doc){
         if(err){

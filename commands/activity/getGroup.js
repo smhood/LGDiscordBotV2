@@ -31,11 +31,11 @@ module.exports = class ReplyCommand extends Command {
 
   run(msg, { group }) {
     const db = getDatabase();
-    dbo.collection("members").find({ groups: group }).toArray(function(err, docs){
+    db.collection("members").find({ groups: group.toLowerCase() }).toArray(function(err, docs){
       if(err) return msg.channel.sendMessage("An Error Occured");
       console.log(docs);
       if(docs.length > 0){
-        var post = "";
+        var post = `User | PostCount - For ${group}\n`;
         docs.forEach(function(member){
           post += `${member.userName} : PostCount ${member.postCount}\n`;
           if(post.length > 1500){
