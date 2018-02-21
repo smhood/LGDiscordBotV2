@@ -27,13 +27,13 @@ client.registry
       })
     .registerCommandsIn(path.join(__dirname, 'commands'));
 
-  client.on('ready', () => {
+  client.on('READY', () => {
     connect();
     console.log('Logged in!');
     client.user.setActivity('Monitoring');
   });
 
-  client.on('message_create', () => {
+  client.on('MESSAGE_CREATE', () => {
     console.log('Message was created.');
   });
 
