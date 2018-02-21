@@ -4,11 +4,11 @@ const { getDatabase } = require('../../database/mongoDb');
 module.exports = class ReplyCommand extends Command {
   constructor(client) {
       super(client, {
-          name: 'getUser',
+          name: 'getuser',
           group: 'activity',
-          memberName: 'getUser',
+          memberName: 'getuser',
           description: 'Returns user activity',
-          examples: ['getUser Varius'],
+          examples: ['getuser Varius'],
           args: [
             {
                 key: 'name',
