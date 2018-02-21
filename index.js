@@ -12,7 +12,8 @@ const client = new CommandoClient({
 client.registry
     .registerDefaultTypes()
     .registerGroups([
-        ['activity', 'Commands dedicated to viewing activity.']
+        ['activity', 'Commands dedicated to viewing activity.'],
+        ['general', 'Commands dedicated for general use.']
     ])
     .registerDefaultGroups()
     .registerDefaultCommands(
