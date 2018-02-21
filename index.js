@@ -38,11 +38,17 @@ client.registry
     else{
       const db = getDatabase();
 
-      db.collection('members').findAndModify({
-        query: { userName: message.author.username },
-        update: { $inc: { postCount: 1} },
-        upsert: true
-      });
+      db.collection('members').findAndModify(
+        { userName: message.author.username },
+        [],
+        { $inc: { postCount: 1 } },
+        {new: true, upsert: true}, 
+        function(err, doc){
+          if(err){
+            console.log(err);
+          }
+        }
+      );
     }
   });
 
