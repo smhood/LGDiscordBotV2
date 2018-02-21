@@ -41,7 +41,7 @@ client.registry
       db.collection('members').findAndModify(
         { userName: message.author.username },
         [],
-        { $inc: { postCount: 1 } },
+        { $inc: { postCount: 1 }, $setOnInsert: { groups: message.member.roles.map(role => role.name)} },
         {new: true, upsert: true}, 
         function(err, doc){
           if(err){
