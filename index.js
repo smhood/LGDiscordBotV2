@@ -14,17 +14,6 @@ client.registry
         ['activity', 'Commands dedicated to viewing activity.']
     ])
     .registerDefaultGroups()
-    .registerDefaultCommands(
-      {
-        ping: false,
-        eval: false,
-        enable: false,
-        disable: false,
-        reload: false,
-        load: false,
-        unload: false,
-        groups: false
-      })
     .registerCommandsIn(path.join(__dirname, 'commands'));
 
   client.on('ready', () => {
