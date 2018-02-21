@@ -17,8 +17,8 @@ module.exports = class ReplyCommand extends Command {
     db.collection("members").find({}).project({_id: 0}).toArray(function(err, docs){
       if(err){
         console.log(err);
+        return;
       }
-      console.log(docs);
       return msg.say('Hi, I\'m awake!');
     });
   }

@@ -1,6 +1,6 @@
 const { CommandoClient } = require('discord.js-commando');
 const path = require('path');
-const { connect } = require('./database/mongoDb');
+const { connect, getDatabase } = require('./database/mongoDb');
 
 const client = new CommandoClient({
   commandPrefix: process.env.PREFIX,
@@ -34,7 +34,46 @@ client.registry
   });
 
   client.on('message', () => {
-    console.log('Message was created.');
+    if (message.author.bot) return;
+    else{
+      const db = getDatabase();
+
+      db.collection("members").find({ userName: message.author.username }).project({_id: 0}).toArray(function(err, docs){
+        if(err){
+          console.log(err);
+        }
+        if(docs.length > 0){
+          console.log(message.author.username);
+          console.log(message.member.roles.map(role => role.name));
+          // let member = {
+          //   userName: docs.userName,
+          //   postCount: docs.postCount + 1,
+          //   groups: docs.groups
+          // }
+          // dbo.collection("members").insertOne(member, function(err, res){
+          //   if(err){
+          //     console.log(err);
+          //   }
+          // });
+          // return;
+        }
+        else{
+          console.log(message.author.username);
+          console.log(message.member.roles.map(role => role.name));
+          // let member = {
+          //   userName: message.author.username,
+          //   postCount: 1,
+          //   groups: message.member.roles.map(role => role.name)
+          // }
+          // dbo.collection("members").insertOne(member, function(err, res){
+          //   if(err){
+          //     console.log(err);
+          //   }
+          // });
+          return;
+        }
+      });
+    }
   });
 
   client.login(process.env.TOKEN);
