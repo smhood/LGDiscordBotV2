@@ -33,7 +33,7 @@ client.registry
     client.user.setActivity('Monitoring');
   });
 
-  client.on('message', () => {
+  client.on('message', (message) => {
     if (message.author.bot) return;
     else{
       const db = getDatabase();
