@@ -1,5 +1,5 @@
 const { Command } = require('discord.js-commando');
-const { client } = require('../../database/mongoDb');
+const { getClient } = require('../../database/mongoDb');
 
 module.exports = class ReplyCommand extends Command {
   constructor(client) {
@@ -14,6 +14,7 @@ module.exports = class ReplyCommand extends Command {
 
   run(msg) {
     const client = getClient();
+    console.log(client);
     return msg.say('Hi, I\'m awake!');
   }
 };
