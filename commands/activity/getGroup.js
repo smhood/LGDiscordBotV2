@@ -35,9 +35,9 @@ module.exports = class ReplyCommand extends Command {
       if(err) return msg.channel.sendMessage("An Error Occured");
       console.log(docs);
       if(docs.length > 0){
-        var post = `User | PostCount - For ${group}\n`;
+        var post = `User  |  Post Count   (${group})\n`;
         docs.forEach(function(member){
-          post += `${member.userName} : PostCount ${member.postCount}\n`;
+          post += `${member.userName} : ${member.postCount}\n`;
           if(post.length > 1500){
             msg.author.send(post);
             post = "";
