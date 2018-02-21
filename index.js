@@ -38,36 +38,10 @@ client.registry
     else{
       const db = getDatabase();
 
-      db.collection("members").findOne({ userName: message.author.username }, { _id: 0 } , function(err, doc){
-        if(err){
-          console.log(err);
-        }
-        if(docs.length > 0){
-          let member = {
-            userName: doc.userName,
-            postCount: doc.postCount + 1,
-            groups: doc.groups
-          }
-          dbo.collection("members").insertOne(member, function(err, res){
-            if(err){
-              console.log(err);
-            }
-          });
-          return;
-        }
-        else{
-          let member = {
-            userName: message.author.username,
-            postCount: 1,
-            groups: message.member.roles.map(role => role.name)
-          }
-          dbo.collection("members").insertOne(member, function(err, res){
-            if(err){
-              console.log(err);
-            }
-          });
-          return;
-        }
+      db.collection('members').findAndModify({
+        query: { userName: message.author.username },
+        update: { $inc: { postCount: 1} },
+        upsert: true
       });
     }
   });
