@@ -12,7 +12,8 @@ function connectDB() {
   MongoClient.connect(url, function(err, client) {
     assert.equal(null, err);
     console.log("Connected successfully to server");
-    client = client;
+    this.client = client;
+    console.log(client);
   });
 }
 
