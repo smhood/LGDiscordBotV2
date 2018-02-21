@@ -19,5 +19,5 @@ function connectDB() {
 
 module.exports = {
   connect: connectDB,
-  client: client
+  client: () => {return client;}
 };
