@@ -5,6 +5,7 @@ module.exports = class ReplyCommand extends Command {
   constructor(client) {
       super(client, {
           name: 'getuser',
+          aliases: ['user'],
           group: 'activity',
           memberName: 'getuser',
           description: 'Returns user activity',
@@ -19,6 +20,15 @@ module.exports = class ReplyCommand extends Command {
       });
   }
 
+  hasPermission(msg) {
+    if(msg.member.roles.exists('name', 'Officer') || this.client.isOwner(msg.author)){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
+
   run(msg, { name }) {
     const db = getDatabase();
     db.collection('members').findOne({ userName: name.toLowerCase() }, { _id: 0}, function(err, result){
@@ -26,14 +36,14 @@ module.exports = class ReplyCommand extends Command {
 
       if(result){
         return msg.channel.sendMessage(
-          `User: ${result.userName}\n` + 
-          `Groups: ${result.groups.join(',')}\n` + 
+          `User: ${name}\n` + 
+          `Groups: ${result.groups.join(', ')}\n` + 
           `PostCount: ${result.postCount}`
         )
       }
       else{
         return msg.channel.sendMessage(
-          `User ${name}, either does not exist or has no posts.`
+          `User ${name} either does not exist or has no posts.`
         )
       }
     });

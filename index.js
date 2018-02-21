@@ -5,7 +5,8 @@ const { connect, getDatabase } = require('./database/mongoDb');
 const client = new CommandoClient({
   commandPrefix: process.env.PREFIX,
   owner: '206136363836243968',
-  disableEveryone: true
+  disableEveryone: true,
+  unknownCommandResponse: false
 });
 
 client.registry
