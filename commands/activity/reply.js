@@ -13,7 +13,7 @@ module.exports = class ReplyCommand extends Command {
   }
 
   run(msg) {
-    console.log(client);
+    const client = getClient();
     return msg.say('Hi, I\'m awake!');
   }
 };
