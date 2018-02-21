@@ -14,7 +14,7 @@ module.exports = class ReplyCommand extends Command {
 
   run(msg) {
     const db = getDatabase();
-    db.collection("members").find({}).toArray(function(err, docs){
+    db.collection("members").find({}).project({_id: 0}).toArray(function(err, docs){
       if(err){
         console.log(err);
       }
