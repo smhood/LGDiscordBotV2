@@ -38,15 +38,15 @@ client.registry
     else{
       const db = getDatabase();
 
-      db.collection("members").find({ userName: message.author.username }).project({_id: 0}).toArray(function(err, docs){
+      db.collection("members").findOne({ userName: message.author.username }).project({_id: 0}).toArray(function(err, doc){
         if(err){
           console.log(err);
         }
         if(docs.length > 0){
           let member = {
-            userName: docs.userName,
-            postCount: docs.postCount + 1,
-            groups: docs.groups
+            userName: doc.userName,
+            postCount: doc.postCount + 1,
+            groups: doc.groups
           }
           dbo.collection("members").insertOne(member, function(err, res){
             if(err){
