@@ -31,8 +31,9 @@ module.exports = class ReplyCommand extends Command {
 
   run(msg, { group }) {
     const db = getDatabase();
-    db.collection('members').find({groups: {$in: [group]}}, {_id: 0}, function(err, docs){
+    db.collection('members').find({groups: group}, {_id: 0}, function(err, docs){
       if(err) return msg.channel.sendMessage("An Error Occured");
+      console.log(docs);
       if(docs.length > 0){
         var post = "";
         docs.forEach(function(member){
