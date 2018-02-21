@@ -16,10 +16,11 @@ function connectDB() {
   });
 }
 
+function getClient(){
+  return this.client;
+}
 
 module.exports = {
   connect: connectDB,
-  getClient: () => {
-    return this.client;
-  }
+  getClient: getClient
 };
