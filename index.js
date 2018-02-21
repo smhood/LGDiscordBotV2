@@ -1,5 +1,6 @@
 const { CommandoClient } = require('discord.js-commando');
 const path = require('path');
+const { connect } = require('./database/mongoDb');
 
 const client = new CommandoClient({
   commandPrefix: process.env.PREFIX,
@@ -27,6 +28,7 @@ client.registry
     .registerCommandsIn(path.join(__dirname, 'commands'));
 
     client.on('ready', () => {
+      connect();
       console.log('Logged in!');
       client.user.setActivity('Monitoring');
   });
