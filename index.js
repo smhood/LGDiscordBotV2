@@ -38,7 +38,7 @@ client.registry
     else{
       const db = getDatabase();
 
-      db.collection("members").findOne({ userName: message.author.username }).project({_id: 0}).toArray(function(err, doc){
+      db.collection("members").findOne({ userName: message.author.username }, { _id: 0 } , function(err, doc){
         if(err){
           console.log(err);
         }
