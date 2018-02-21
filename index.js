@@ -36,11 +36,11 @@ client.registry
   client.on('message', (message) => {
     if (message.author.bot) return;
     if(message.content.length < 10) return;
-    
+
     const db = getDatabase();
 
     db.collection('members').findAndModify(
-      { userName: message.author.username },
+      { userName: message.author.username.toLowerCase() },
       [],
       { $inc: { postCount: 1 }, $set: { groups: message.member.roles.map(role => role.name)} },
       {new: true, upsert: true}, 
