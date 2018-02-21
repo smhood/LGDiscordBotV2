@@ -13,8 +13,13 @@ module.exports = class ReplyCommand extends Command {
   }
 
   run(msg) {
-    const client = getClient();
-    console.log(client);
-    return msg.say('Hi, I\'m awake!');
+    const db = getDatabase();
+    db.collection("members").find({}).toArray(function(err, docs){
+      if(err){
+        console.log(err);
+      }
+      console.log(docs);
+      return msg.say('Hi, I\'m awake!');
+    });
   }
 };

@@ -17,7 +17,7 @@ function connectDB() {
 }
 
 function getClient(){
-  return this.client;
+  return this.client.db("lg-discord-activity");
 }
 
 module.exports = {
