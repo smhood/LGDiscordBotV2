@@ -57,18 +57,17 @@ function resetActivity(client, db){
 
     var post = "User  |  Post Count  - Last Months Activty\n";
 
-    docs.forEach(function(member){
-      console.log(member.userName);
-      post += `${member.userName}  | ${member.postCount}\n`;
+    for(i = 0; i < docs.length; i++){
+      post += `${docs[i].userName}  | ${docs[i].postCount}\n`;
 
       if(post.length > 1500){
         channel.send(post);
         post = "";
       }
-    });
 
-    if(post.length > 0){
-      channel.send(post);
+      if(i + 1 > docs.length){
+        channel.send(post);
+      }
     }
   });
 
