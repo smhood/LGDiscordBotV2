@@ -45,6 +45,6 @@ client.registry
 
   setInterval(function(){
     checkReset(client);
-  }, 10000);
+  }, 100000);
 
   client.login(process.env.TOKEN);

@@ -24,10 +24,9 @@ function checkReset(client){
     var futureDate = new Date(result.value);
     futureDate.setDate(futureDate.getDate() + 30);
     console.log(futureDate);
+    console.log(result.value);
 
     if(futureDate > result.value) return;
-
-    
 
     db.collection('setting').findAndModify(
       { key: "DataCleanDateTime" },
