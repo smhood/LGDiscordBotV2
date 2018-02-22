@@ -60,14 +60,7 @@ function resetActivity(client, db){
     for(i = 0; i < docs.length; i++ ){
       post += `${docs[0].userName}  | ${docs[0].postCount}\n`;
 
-      if(post.length > 1500){
-        channel.send(post);
-        post = "";
-      }
-
-      if(post.length > 0 && ((i + 1) > docs.length)){
-        channel.send(post);
-      }
+      console.log(post);
     }
   });
 }
