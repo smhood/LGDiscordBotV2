@@ -21,7 +21,7 @@ function checkReset(client){
   const db = getDatabase();
 
   db.collection('settings').findOne({ key: "DataCleanDateTime" }, { _id: 0 }, function(err, result){
-    let resetDate = new Date("2018-02-19T00:00:00.000Z");
+    let resetDate = new Date(result.value);
     let currentDate = new Date()
 
     if(resetDate > currentDate) {
@@ -33,7 +33,7 @@ function checkReset(client){
     db.collection('setting').findAndModify(
       { key: "DataCleanDateTime" },
       [],
-      { $set: { value: resetDate.toString() } }, 
+      { $set: { value: resetDate } }, 
       { new: true, upsert: true }, 
       function(err, doc){
         if(err){
