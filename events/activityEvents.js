@@ -57,18 +57,24 @@ function resetActivity(client, db){
 
     var post = "User  |  Post Count  - Last Months Activty\n";
 
-    docs.forEach(function(member, i) {
-      post += `${member.userName}  | ${member.postCount}\n`;
+    console.log(docs.length);
 
-      if(post.length > 1500){
-        channel.send(post);
-        post = "";
-      }
+    for(i = 0; i < docs.length; i++ ){
+      console.log(docs[i].userName);
+    }
 
-      if(post.length > 0 && (i + 1 > docs.length)){
-        channel.send(post);
-      }
-    });
+    // docs.forEach(function(member, i) {
+    //   post += `${member.userName}  | ${member.postCount}\n`;
+
+    //   if(post.length > 1500){
+    //     channel.send(post);
+    //     post = "";
+    //   }
+
+    //   if(post.length > 0 && (i + 1 > docs.length)){
+    //     channel.send(post);
+    //   }
+    // });
   });
 }
 
