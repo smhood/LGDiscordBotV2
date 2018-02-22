@@ -42,7 +42,6 @@ function checkReset(client){
           console.log(err);
           return;
         }
-        console.log("Something wrong")
     });
   });
 }
@@ -57,7 +56,8 @@ function resetActivity(client, db){
     let channel = client.channels.find('name', "activitylog");
 
     let post = 'User  |  Post Count  - Last Months Activty\n';
-    docs.forEach(function(member){
+
+    await docs.forEach(function(member){
       console.log(member);
       post += `${member.userName}  | ${member.postCount}\n`
 
@@ -65,13 +65,15 @@ function resetActivity(client, db){
         channel.send(post);
         post = "";
       }
-    })
+    });
 
     if(post.length > 0){
       console.log("Done.");
       channel.send(post);
     }
   });
+
+
 }
 
 module.exports = {
