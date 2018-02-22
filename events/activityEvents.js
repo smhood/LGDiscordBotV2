@@ -68,7 +68,6 @@ function resetActivity(client, db){
       if(post.length > 0 && (i + 1 > docs.length)){
         channel.send(post);
       }
-      return;
     });
   });
 }
