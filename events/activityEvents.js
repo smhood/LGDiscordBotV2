@@ -58,7 +58,8 @@ function resetActivity(client, db){
 
     var post = "User  |  Post Count  - Last Months Activty\n";
 
-    for(i = 0; i < docs.length; i++){
+    console.log(test);
+    for(var i = 0; i < docs.length; i++){
       console.log(docs[1].userName);
       post += `${docs[i].userName}  | ${docs[i].postCount}\n`;
 
