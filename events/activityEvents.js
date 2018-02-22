@@ -22,10 +22,9 @@ function checkReset(client){
 
   db.collection('settings').findOne({ key: "DataCleanDateTime" }, { _id: 0 }, function(err, result){
     let resetDate = new Date(result.value);
-
     let currentDate = new Date().toISOString();
 
-    console.log(futureDate);
+    console.log(resetDate);
     console.log(currentDate);
 
     if(resetDate > currentDate) return;
