@@ -42,7 +42,6 @@ function checkReset(client){
           console.log(err);
           return;
         }
-        return;
     });
   });
 }
@@ -58,23 +57,20 @@ function resetActivity(client, db){
 
     var post = "User  |  Post Count  - Last Months Activty\n";
 
-    console.log("test");
-    for(var i = 0; i < docs.length; i++){
-      console.log(docs[1].userName);
-      post += `${docs[i].userName}  | ${docs[i].postCount}\n`;
+    docs.map((member, i) => {
+      console.log(i);
+      post += `${member.userName}  | ${member.postCount}\n`;
 
       if(post.length > 1500){
         channel.send(post);
         post = "";
       }
 
-      if(i + 1 > docs.length){
+      if(post.length > 0 && (i + 1 > docs.length)){
         channel.send(post);
       }
-    }
+    });
   });
-
-
 }
 
 module.exports = {
