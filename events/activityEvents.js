@@ -60,21 +60,17 @@ function resetActivity(client, db){
     console.log(docs.length);
 
     for(i = 0; i < docs.length; i++ ){
-      console.log(docs[i].userName);
+      post += `${member.userName}  | ${member.postCount}\n`;
+
+      if(post.length > 1500){
+        channel.send(post);
+        post = "";
+      }
+
+      if(post.length > 0 && ((i + 1) > docs.length)){
+        channel.send(post);
+      }
     }
-
-    // docs.forEach(function(member, i) {
-    //   post += `${member.userName}  | ${member.postCount}\n`;
-
-    //   if(post.length > 1500){
-    //     channel.send(post);
-    //     post = "";
-    //   }
-
-    //   if(post.length > 0 && (i + 1 > docs.length)){
-    //     channel.send(post);
-    //   }
-    // });
   });
 }
 
