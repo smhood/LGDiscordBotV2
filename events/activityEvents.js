@@ -57,10 +57,8 @@ function resetActivity(client, db){
 
     var post = "User  |  Post Count  - Last Months Activty\n";
 
-    console.log(docs.length);
-
     for(i = 0; i < docs.length; i++ ){
-      post += `${member.userName}  | ${member.postCount}\n`;
+      post += `${docs[0].userName}  | ${docs[0].postCount}\n`;
 
       if(post.length > 1500){
         channel.send(post);
