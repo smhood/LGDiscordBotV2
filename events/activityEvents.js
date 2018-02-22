@@ -30,7 +30,7 @@ function checkReset(client){
 
     resetDate.setDate(resetDate.getDate() + 30);
 
-    db.collection('setting').findAndModify(
+    db.collection('settings').findAndModify(
       { key: "DataCleanDateTime" },
       [],
       { $set: { value: resetDate } }, 
