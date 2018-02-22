@@ -21,7 +21,7 @@ function checkReset(client){
   const db = getDatabase();
 
   db.collection('settings').findOne({ key: "DataCleanDateTime" }, { _id: 0 }, function(err, result){
-      console.log(result.value);
+      db.collection('setting').findAndModify({ key: "DataCleanDateTime" }, [], { value: new Date().toISOString() })
   });
 }
 
