@@ -64,8 +64,8 @@ function resetActivity(client, db){
         channel.send(post);
         post = "";
       }
-      console.log(i + 1 > docs.length);
-      if((i + 1 > docs.length) && post.length > 0){
+      console.log((docs.length - 1) == i)
+      if(((docs.length - 1) == i) && post.length > 0){
         channel.send(post);
       }
     }
