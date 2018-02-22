@@ -57,6 +57,8 @@ function resetActivity(client, db){
 
     var post = "User  |  Post Count  - Last Months Activty\n";
 
+    console.log(docs);
+    
     docs.map((member, i) => {
       console.log(i);
       post += `${member.userName}  | ${member.postCount}\n`;
@@ -69,6 +71,7 @@ function resetActivity(client, db){
       if(post.length > 0 && (i + 1 > docs.length)){
         channel.send(post);
       }
+      return;
     });
   });
 }
