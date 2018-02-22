@@ -64,11 +64,11 @@ function resetActivity(client, db){
         channel.send(post);
         post = "";
       }
-
-      if(post.length > 0){
-        channel.send(post);
-      }
     })
+
+    if(post.length > 0){
+      channel.send(post);
+    }
   });
 }
 
