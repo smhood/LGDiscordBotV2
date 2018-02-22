@@ -21,17 +21,21 @@ function checkReset(client){
   const db = getDatabase();
 
   db.collection('settings').findOne({ key: "DataCleanDateTime" }, { _id: 0 }, function(err, result){
-    let futureDate = new Date(result.value);
-    futureDate.setDate(futureDate.getDate() + 30);
-    console.log(futureDate);
-    console.log(result.value);
+    let resetDate = new Date(result.value);
 
-    if(futureDate > Date().toISOString()) return;
+    let currentDate = new Date().toISOString();
+
+    console.log(futureDate);
+    console.log(currentDate);
+
+    if(resetDate > currentDate) return;
+
+    resetDate.setDate(resetDate.getDate() + 30);
 
     db.collection('setting').findAndModify(
       { key: "DataCleanDateTime" },
       [],
-      { $set: { value: new Date().toISOString() } }, 
+      { $set: { value: resetDate } }, 
       { new: true, upsert: true }, 
       function(err, doc){
         if(err){
