@@ -45,6 +45,7 @@ client.registry
 
   setInterval(function(){
     checkReset(client);
-  }, 10000);
+    console.log('Checked Reset at ' + Date())
+  }, 3600000);
 
   client.login(process.env.TOKEN);
