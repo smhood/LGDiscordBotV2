@@ -58,9 +58,10 @@ function resetActivity(client, db){
     var post = "User  |  Post Count  - Last Months Activty\n";
 
     for(i = 0; i < docs.length; i++ ){
-      post += `${docs[0].userName}  | ${docs[0].postCount}\n`;
+      post += `${docs[i].userName}  | ${docs[i].postCount}\n`;
 
-      console.log(post);
+      console.log(i);
+      channel.send(post);
     }
   });
 }
