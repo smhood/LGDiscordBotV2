@@ -58,18 +58,20 @@ function resetActivity(client, db){
     var post = "User  |  Post Count  - Last Months Activty\n";
 
     for(i = 0; i < docs.length; i++ ){
-      post += `${docs[i].userName}  | ${docs[i].postCount}\n`;
+      post += `${docs[i].userName}   |   ${docs[i].postCount}\n`;
 
       if(post.length > 1500){
         channel.send(post);
         post = "";
       }
-      console.log((docs.length - 1) == i)
+      
       if(((docs.length - 1) == i) && post.length > 0){
         channel.send(post);
+        db.collection('members').deleteMany({});
       }
     }
   });
+
 }
 
 module.exports = {
