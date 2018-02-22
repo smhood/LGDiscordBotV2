@@ -34,6 +34,9 @@ client.registry
   client.on('ready', () => {
     connect();
     console.log('Logged in!');
+    client.guilds.map(guild => {
+      console.log(guild.name);
+    });
     client.user.setActivity('Monitoring');
   });
 
