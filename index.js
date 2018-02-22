@@ -1,6 +1,7 @@
 const { CommandoClient } = require('discord.js-commando');
 const path = require('path');
-const { connect, getDatabase } = require('./database/mongoDb');
+const { connect } = require('./database/mongoDb');
+const { updateMember, checkReset } = require('./events/activityEvents');
 
 const client = new CommandoClient({
   commandPrefix: process.env.PREFIX,
@@ -39,20 +40,11 @@ client.registry
   client.on('message', (message) => {
     if (message.author.bot) return;
     if(message.content.length < 10) return;
-
-    const db = getDatabase();
-
-    db.collection('members').findAndModify(
-      { userName: message.author.username.toLowerCase() },
-      [],
-      { $inc: { postCount: 1 }, $set: { groups: message.member.roles.map(role => role.name.toLowerCase())} },
-      {new: true, upsert: true}, 
-      function(err, doc){
-        if(err){
-          console.log(err);
-        }
-      }
-    );
+    updateMember(message);
   });
+
+  setInterval(function(){
+    checkReset(client);
+  }, 100000);
 
   client.login(process.env.TOKEN);
