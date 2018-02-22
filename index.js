@@ -48,4 +48,5 @@ client.registry
     console.log('Checked Reset at ' + Date())
   }, 3600000);
 
+//Dependent on enviroment
   client.login(process.env.TOKEN);
