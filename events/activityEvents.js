@@ -26,7 +26,7 @@ function checkReset(client){
     console.log(futureDate);
     console.log(result.value);
 
-    if(futureDate > Date.parse(result.value)) return;
+    if(futureDate > Date().toISOString()) return;
 
     db.collection('setting').findAndModify(
       { key: "DataCleanDateTime" },
