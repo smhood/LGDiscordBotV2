@@ -21,12 +21,12 @@ function checkReset(client){
   const db = getDatabase();
 
   db.collection('settings').findOne({ key: "DataCleanDateTime" }, { _id: 0 }, function(err, result){
-    var futureDate = new Date(result.value);
+    let futureDate = new Date(result.value);
     futureDate.setDate(futureDate.getDate() + 30);
     console.log(futureDate);
     console.log(result.value);
 
-    if(futureDate > result.value) return;
+    if(futureDate > Date.parse(result.value)) return;
 
     db.collection('setting').findAndModify(
       { key: "DataCleanDateTime" },
