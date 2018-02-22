@@ -47,7 +47,7 @@ function checkReset(client){
 }
 
 function resetActivity(client, db){
-  db.collection('members').find({}, { _id: 0 }, function(err, docs){
+  db.collection('members').find({}, { _id: 0 }).toArray(function(err, docs){
     if(err){
       console.log(err);
       return;
@@ -58,7 +58,6 @@ function resetActivity(client, db){
     var post = "User  |  Post Count  - Last Months Activty\n";
 
     docs.forEach(function(member, i) {
-      console.log(i);
       post += `${member.userName}  | ${member.postCount}\n`;
 
       if(post.length > 1500){
