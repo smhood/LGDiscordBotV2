@@ -55,11 +55,11 @@ function resetActivity(client, db){
 
     let channel = client.channels.find('name', "activitylog");
 
-    var post = 'User  |  Post Count  - Last Months Activty\n';
+    var post = "User  |  Post Count  - Last Months Activty\n";
 
     docs.forEach(function(member){
       console.log(member.userName);
-      post += `${member.userName}  | ${member.postCount}\n`
+      post += `${member.userName}  | ${member.postCount}\n`;
 
       if(post.length > 1500){
         channel.send(post);
