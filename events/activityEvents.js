@@ -24,7 +24,7 @@ function checkReset(client){
       db.collection('setting').findAndModify(
         { key: "DataCleanDateTime" },
          [],
-        { value: new Date().toISOString() }, 
+        { $set: { value: new Date().toISOString() } }, 
         { new: true, upsert: true }, 
         function(err, doc){
           if(err){
