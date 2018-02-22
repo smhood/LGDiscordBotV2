@@ -32,17 +32,17 @@ module.exports = class GetUserActivity extends Command {
   run(msg, { name }) {
     const db = getDatabase();
     db.collection('members').findOne({ userName: name.toLowerCase() }, { _id: 0}, function(err, result){
-      if(err) return msg.channel.sendMessage("An Error Occured");
+      if(err) return msg.channel.send("An Error Occured");
 
       if(result){
-        return msg.channel.sendMessage(
+        return msg.channel.send(
           `User: ${name}\n` + 
           `Groups: ${result.groups.join(', ')}\n` + 
           `PostCount: ${result.postCount}`
         )
       }
       else{
-        return msg.channel.sendMessage(
+        return msg.channel.send(
           `User ${name} either does not exist or has no posts.`
         )
       }

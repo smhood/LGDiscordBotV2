@@ -32,7 +32,7 @@ module.exports = class GetGroupActivity extends Command {
   run(msg, { group }) {
     const db = getDatabase();
     db.collection("members").find({ groups: group.toLowerCase() }).toArray(function(err, docs){
-      if(err) return msg.channel.sendMessage("An Error Occured");
+      if(err) return msg.channel.send("An Error Occured");
       console.log(docs);
       if(docs.length > 0){
         var post = `User  |  Post Count   (${group})\n`;

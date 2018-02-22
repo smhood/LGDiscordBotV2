@@ -28,6 +28,8 @@ function checkReset(client){
       return;
     }
 
+    resetActivity(client, db);
+
     resetDate.setDate(resetDate.getDate() + 30);
 
     db.collection('settings').findAndModify(
@@ -38,9 +40,35 @@ function checkReset(client){
       function(err, doc){
         if(err){
           console.log(err);
+          return;
         }
         console.log("Something wrong")
     });
+  });
+}
+
+function resetActivity(client, db){
+  db.collection('members').find({}, { _id: 0 }, function(err, docs){
+    if(err){
+      console.log(err);
+      return;
+    }
+
+    let channel = client.channels.find('name', "activitylog");
+
+    let post = 'User  |  Post Count  - Last Months Activty\n';
+    docs.forEach(function(member){
+      post += `${member.userName}  | ${member.postCount}`
+
+      if(post.length > 1500){
+        channel.send(post);
+        post = "";
+      }
+
+      if(post.length > 0){
+        channel.send(post);
+      }
+    })
   });
 }
 
