@@ -24,21 +24,21 @@ function checkReset(client){
     var futureDate = new Date(result.value);
     futureDate.setDate(futureDate.getDate() + 30);
     console.log(futureDate);
-    
+
     if(futureDate > result.value) return;
+
+    
 
     db.collection('setting').findAndModify(
       { key: "DataCleanDateTime" },
-        [],
+      [],
       { $set: { value: new Date().toISOString() } }, 
       { new: true, upsert: true }, 
       function(err, doc){
         if(err){
           console.log(err);
         }
-        var myDate = new Date();
-        myDate.setDate(myDate.getDate() + AddDaysHere);
-        console.log(doc);
+        console.log("Something wrong")
     });
   });
 }
