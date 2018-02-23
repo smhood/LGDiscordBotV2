@@ -20,6 +20,7 @@ module.exports = class PurgeCommand extends Command {
     }
 
     hasPermission(msg) {
+      if(msg.member.roles.length == 0) return;
       if(msg.member.roles.exists('name', 'Officer') || this.client.isOwner(msg.author)){
         return true;
       }

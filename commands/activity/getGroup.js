@@ -21,6 +21,7 @@ module.exports = class GetGroupActivity extends Command {
   }
 
   hasPermission(msg) {
+    if(msg.member.roles.length == 0) return false;
     if(msg.member.roles.exists('name', 'Officer') || this.client.isOwner(msg.author)){
       return true;
     }
@@ -31,7 +32,7 @@ module.exports = class GetGroupActivity extends Command {
 
   run(msg, { group }) {
     const db = getDatabase();
-    db.collection("members").find({ groups: group.toLowerCase() }).toArray(function(err, docs){
+    db.collection("members").find({ groups: group.toLowerCase() }).sort( { userName: 1 } ).toArray(function(err, docs){
       if(err) return msg.channel.send("An Error Occured");
       console.log(docs);
       if(docs.length > 0){

@@ -47,7 +47,7 @@ function checkReset(client){
 }
 
 function resetActivity(client, db){
-  db.collection('members').find({}, { _id: 0 }).toArray(function(err, docs){
+  db.collection('members').find({}, { _id: 0 }).sort({ userName: 1 }).toArray(function(err, docs){
     if(err){
       console.log(err);
       return;

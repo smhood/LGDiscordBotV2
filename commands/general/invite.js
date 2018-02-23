@@ -13,6 +13,7 @@ module.exports = class InviteCommand extends Command {
     }
 
     hasPermission(msg) {
+      if(msg.member.roles.length == 0) return false;
       if(msg.member.roles.exists('name', 'LG Member') || msg.member.roles.exists('name', 'Officer') || this.client.isOwner(msg.author)){
         return true;
       }
