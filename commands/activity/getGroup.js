@@ -34,7 +34,6 @@ module.exports = class GetGroupActivity extends Command {
     const db = getDatabase();
     db.collection("members").find({ groups: group.toLowerCase() }).sort( { userName: 1 } ).toArray(function(err, docs){
       if(err) return msg.channel.send("An Error Occured");
-      console.log(docs);
       if(docs.length > 0){
         var post = `User  |  Post Count   (${group})\n`;
         docs.forEach(function(member){
