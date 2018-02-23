@@ -33,7 +33,7 @@ module.exports = class GetUserActivity extends Command {
   run(msg, { name }) {
     const db = getDatabase();
 
-    db.collection('members').findOne({ userName: { "$regex": name.toLowerCase(), "$options": "i" } }, { _id: 0}, function(err, result){
+    db.collection('members').findOne({ userName: { "$regex": `/^${name.toLowerCase()}/i`} }, { _id: 0}, function(err, result){
       if(err) return msg.channel.send("An Error Occured");
 
       if(result){
