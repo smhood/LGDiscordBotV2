@@ -21,6 +21,7 @@ module.exports = class GetGroupActivity extends Command {
   }
 
   hasPermission(msg) {
+    if(msg.member.roles.length == 0) return false;
     if(msg.member.roles.exists('name', 'Officer') || this.client.isOwner(msg.author)){
       return true;
     }

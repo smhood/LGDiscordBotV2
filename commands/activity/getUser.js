@@ -21,6 +21,7 @@ module.exports = class GetUserActivity extends Command {
   }
 
   hasPermission(msg) {
+    if(msg.member.roles.length == 0) return false;
     if(msg.member.roles.exists('name', 'Officer') || this.client.isOwner(msg.author)){
       return true;
     }
@@ -32,7 +33,7 @@ module.exports = class GetUserActivity extends Command {
   run(msg, { name }) {
     const db = getDatabase();
 
-    db.collection('members').findOne({ userName: name.toLowerCase() }, { _id: 0}, function(err, result){
+    db.collection('members').findOne({ userName: { "$regex": name.toLowerCase(), "$options": "i" } }, { _id: 0}, function(err, result){
       if(err) return msg.channel.send("An Error Occured");
 
       if(result){
