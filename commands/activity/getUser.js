@@ -31,10 +31,8 @@ module.exports = class GetUserActivity extends Command {
 
   run(msg, { name }) {
     const db = getDatabase();
-
-    let search = /^name.toLowerCase()/;
-    console.log(search);
-    db.collection('members').findOne({ userName: search }, { _id: 0}, function(err, result){
+    
+    db.collection('members').findOne({ userName: name.toLowerCase() }, { _id: 0}, function(err, result){
       if(err) return msg.channel.send("An Error Occured");
 
       if(result){
