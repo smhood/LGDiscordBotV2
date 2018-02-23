@@ -31,12 +31,12 @@ module.exports = class GetUserActivity extends Command {
 
   run(msg, { name }) {
     const db = getDatabase();
-    db.collection('members').findOne({ userName: name.toLowerCase() }, { _id: 0}, function(err, result){
+    db.collection('members').findOne({ userName: /^name.toLowerCase()/ }, { _id: 0}, function(err, result){
       if(err) return msg.channel.send("An Error Occured");
 
       if(result){
         return msg.channel.send(
-          `User: ${name}\n` + 
+          `User: ${result.name}\n` + 
           `Groups: ${result.groups.join(', ')}\n` + 
           `PostCount: ${result.postCount}`
         )
