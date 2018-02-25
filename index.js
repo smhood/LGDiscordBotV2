@@ -15,7 +15,7 @@ client.registry
     .registerGroups([
         ['activity', 'Commands dedicated to viewing activity.'],
         ['general', 'Commands dedicated for general use.'],
-        ['ascendance', 'Commands dedicated for Ascendance.']
+        ['ascendance', 'Commands dedicated for Ascendance.'],
         ['admin', 'Commands dedicated for admin privileges.']
     ])
     .registerDefaultGroups()
