@@ -1,7 +1,7 @@
 const { Command } = require('discord.js-commando');
 const { getDatabase } = require('../../database/mongoDb');
 
-module.exports = class GetUserActivity extends Command {
+module.exports = class GetDisciplines extends Command {
   constructor(client) {
       super(client, {
           name: 'disciplines',
