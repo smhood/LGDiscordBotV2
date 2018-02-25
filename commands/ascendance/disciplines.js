@@ -24,7 +24,11 @@ module.exports = class GetDisciplines extends Command {
   }
 
   run(msg) {
-      return msg.channel.send(`${msg.author} here is all of our discipline/powers information!`, 
-      { embed: {url: 'http://www.legend-gaming.net/lgforums/showthread.php?15429-Spreadsheets'}})
+      return msg.channel.send(
+      { embed: {
+        title: 'Disciplines and Powers Data',
+        description: `${msg.author} here is all of our discipline/powers information!`,
+        url: 'http://www.legend-gaming.net/lgforums/showthread.php?15429-Spreadsheets'
+      }})
   }
 };
