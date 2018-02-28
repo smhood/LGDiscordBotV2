@@ -48,9 +48,17 @@ client.registry
   });
 
   setInterval(function(){
-    checkReset(client);
-    console.log('Checked Reset at ' + Date())
+    if(process.env.ENV === "DEV"){
+      console.log('Checked Reset at ' + Date());
+      return;
+    }
+    else{
+      console.log('Checked Reset at ' + Date())
+      checkReset(client);
+    }
   }, 3600000);
 
 //Dependent on enviroment
   client.login(process.env.TOKEN);
+
+  console.log(process.env);
