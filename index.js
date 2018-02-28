@@ -48,6 +48,9 @@ client.registry
   });
 
   setInterval(function(){
+    if(process.env.ENV){
+      console.log(process.env.ENV);
+    }
     checkReset(client);
     console.log('Checked Reset at ' + Date())
   }, 3600000);
