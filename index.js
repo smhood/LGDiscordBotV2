@@ -48,7 +48,7 @@ client.registry
   });
 
   setInterval(function(){
-    if(process.env.ENV){
+    if(process.env.ENV == "DEV"){
       console.log(process.env.ENV);
     }
     checkReset(client);
