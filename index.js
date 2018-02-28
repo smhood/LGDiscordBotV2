@@ -60,5 +60,3 @@ client.registry
 
 //Dependent on enviroment
   client.login(process.env.TOKEN);
-
-  console.log(process.env);
