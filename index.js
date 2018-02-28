@@ -49,10 +49,13 @@ client.registry
 
   setInterval(function(){
     if(process.env.ENV === "DEV"){
-      console.log(process.env.ENV);
+      console.log('Checked Reset at ' + Date());
+      return;
     }
-    checkReset(client);
-    console.log('Checked Reset at ' + Date())
+    else{
+      console.log('Checked Reset at ' + Date())
+      checkReset(client);
+    }
   }, 3600000);
 
 //Dependent on enviroment
