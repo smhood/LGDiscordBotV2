@@ -48,7 +48,7 @@ client.registry
   });
 
   setInterval(function(){
-    if(process.env.ENV == "DEV"){
+    if(process.env.ENV === "DEV"){
       console.log(process.env.ENV);
     }
     checkReset(client);
@@ -57,3 +57,5 @@ client.registry
 
 //Dependent on enviroment
   client.login(process.env.TOKEN);
+
+  console.log(process.env);
