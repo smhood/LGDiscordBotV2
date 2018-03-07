@@ -22,15 +22,23 @@ function checkReset(client){
 
   db.collection('settings').findOne({ key: "DataCleanDateTime" }, { _id: 0 }, function(err, result){
     let resetDate = new Date(result.value);
-    let currentDate = new Date()
+    var localTime = new Date(); //get your local time
+    var utcTime = localTime.getUTCHours(); // find UTC hours
+    var estTime = new Date(); // create a new date object for the EST time
+    estTime.setHours(utcTime-5); // adjust it for EST hours. 
 
-    if(resetDate > currentDate) {
+    if(resetDate.getMonth() !== estTime.getMonth()) {
       return;
     }
 
     resetActivity(client, db);
 
-    resetDate.setDate(resetDate.getDate() + 30);
+    if(estTime.getMonth() !== 12){
+      resetDate = new Date(estTime.getFullYear(), estTime.getMonth() + 1, 1)
+    }
+    else{
+      resetDate = new Date(estTime.getFullYear() + 1, 1, 1)
+    }
 
     db.collection('settings').findAndModify(
       { key: "DataCleanDateTime" },
