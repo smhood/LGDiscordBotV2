@@ -52,6 +52,7 @@ client.registry
     var utcTime = localTime.getUTCHours(); // find UTC hours
     var estTime = new Date(); // create a new date object for the EST time
     estTime.setHours(utcTime-5); // adjust it for EST hours.
+    
     if(process.env.ENV === "DEV"){
       console.log('Checked Reset at ' + estTime);
       return;
@@ -61,6 +62,22 @@ client.registry
       checkReset(client);
     }
   }, 3600000);
+
+  setInterval(function(){
+    var localTime = new Date(); //get your local time
+    var utcTime = localTime.getUTCHours(); // find UTC hours
+    var estTime = new Date(); // create a new date object for the EST time
+    estTime.setHours(utcTime-5); // adjust it for EST hours.
+    
+    if(estTime.getMonth() !== 12){
+      localTime.setDate(estTime.getFullYear(), estTime.getMonth() + 1, 1);
+      console.log(localTime);
+    }
+    else{
+      localTime.setDate(estTime.getFullYear() + 1, 1, 1);
+      console.log(localTime);
+    }
+  }, 36000);
 
 //Dependent on enviroment
   client.login(process.env.TOKEN);
