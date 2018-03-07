@@ -68,14 +68,13 @@ client.registry
     var utcTime = localTime.getUTCHours(); // find UTC hours
     var estTime = new Date(); // create a new date object for the EST time
     estTime.setHours(utcTime-5); // adjust it for EST hours.
-    console.log(estTime);
     if(estTime.getMonth() !== 12){
-      localTime.setDate(estTime.getFullYear(), estTime.getMonth() + 1, 1);
-      console.log(localTime);
+      var newDate = new Date(estTime.getFullYear(), estTime.getMonth(), 1)
+      console.log(newDate);
     }
     else{
-      localTime.setDate(estTime.getFullYear() + 1, 1, 1);
-      console.log(localTime);
+      var newDate = new Date(estTime.getFullYear(), estTime.getMonth(), 1)
+      console.log(newDate);
     }
   }, 36000);
 
