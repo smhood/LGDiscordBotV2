@@ -69,11 +69,11 @@ client.registry
     var estTime = new Date(); // create a new date object for the EST time
     estTime.setHours(utcTime-5); // adjust it for EST hours.
     if(estTime.getMonth() !== 12){
-      var newDate = new Date(estTime.getFullYear(), estTime.getMonth(), 1)
+      var newDate = new Date(estTime.getFullYear(), estTime.getMonth() + 1, 1)
       console.log(newDate);
     }
     else{
-      var newDate = new Date(estTime.getFullYear(), estTime.getMonth(), 1)
+      var newDate = new Date(estTime.getFullYear() + 1, 1, 1)
       console.log(newDate);
     }
   }, 36000);
