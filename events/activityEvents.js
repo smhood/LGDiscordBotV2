@@ -34,10 +34,10 @@ function checkReset(client){
     resetActivity(client, db);
 
     if(estTime.getMonth() !== 12){
-      resetDate.setDate(estTime.getFullYear(), estTime.getMonth() + 1, 1);
+      resetDate = new Date(estTime.getFullYear(), estTime.getMonth() + 1, 1)
     }
     else{
-      resetDate.setDate(estTime.getFullYear() + 1, 1, 1);
+      resetDate = new Date(estTime.getFullYear() + 1, 1, 1)
     }
 
     db.collection('settings').findAndModify(
