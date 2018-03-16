@@ -1,14 +1,14 @@
 const { Command } = require('discord.js-commando');
 
-module.exports = class GetDisciplines extends Command {
+module.exports = class GetSpreadsheete extends Command {
   constructor(client) {
       super(client, {
-          name: 'disciplines',
-          aliases: ['powers'],
+          name: 'spreadsheet',
+          aliases: ['sheet'],
           group: 'ascendance',
-          memberName: 'disciplines',
-          description: 'Gives link to discipline spread sheet',
-          examples: ['disciplines']
+          memberName: 'spreadsheet',
+          description: 'Direct link to the spreadsheet',
+          examples: ['spreadsheet']
       });
   }
 
@@ -25,9 +25,9 @@ module.exports = class GetDisciplines extends Command {
   run(msg) {
       return msg.channel.send(`${msg.author}`,
       { embed: {
-        title: 'Disciplines and Powers Data',
-        description: `Here is all of our discipline/powers information!`,
-        url: 'http://www.legend-gaming.net/lgforums/showthread.php?15429-Spreadsheets'
+        title: 'Kendogg Spreadsheets',
+        description: 'All your Crowfall Needs!',
+        url: 'https://drive.google.com/drive/folders/1ZV6_mZEtG7BRBRyCVEAQ0YanPgAagnlQ'
       }})
   }
 };

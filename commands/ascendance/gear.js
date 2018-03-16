@@ -1,14 +1,13 @@
 const { Command } = require('discord.js-commando');
 
-module.exports = class GetDisciplines extends Command {
+module.exports = class GetGearRequest extends Command {
   constructor(client) {
       super(client, {
-          name: 'disciplines',
-          aliases: ['powers'],
+          name: 'gear',
           group: 'ascendance',
-          memberName: 'disciplines',
-          description: 'Gives link to discipline spread sheet',
-          examples: ['disciplines']
+          memberName: 'gear',
+          description: 'Page to make crafting requests.',
+          examples: ['gear']
       });
   }
 
@@ -25,9 +24,9 @@ module.exports = class GetDisciplines extends Command {
   run(msg) {
       return msg.channel.send(`${msg.author}`,
       { embed: {
-        title: 'Disciplines and Powers Data',
-        description: `Here is all of our discipline/powers information!`,
-        url: 'http://www.legend-gaming.net/lgforums/showthread.php?15429-Spreadsheets'
+        title: 'Crafting Request',
+        description: 'Need some gear made? Post here!',
+        url: 'http://www.legend-gaming.net/lgforums/showthread.php?15427-Crafting-Requests'
       }})
   }
 };

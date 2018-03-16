@@ -1,14 +1,13 @@
 const { Command } = require('discord.js-commando');
 
-module.exports = class GetDisciplines extends Command {
+module.exports = class GetMatsRequest extends Command {
   constructor(client) {
       super(client, {
-          name: 'disciplines',
-          aliases: ['powers'],
+          name: 'mats',
           group: 'ascendance',
-          memberName: 'disciplines',
-          description: 'Gives link to discipline spread sheet',
-          examples: ['disciplines']
+          memberName: 'mats',
+          description: 'Gets link to make material requests.',
+          examples: ['mats']
       });
   }
 
@@ -25,9 +24,9 @@ module.exports = class GetDisciplines extends Command {
   run(msg) {
       return msg.channel.send(`${msg.author}`,
       { embed: {
-        title: 'Disciplines and Powers Data',
-        description: `Here is all of our discipline/powers information!`,
-        url: 'http://www.legend-gaming.net/lgforums/showthread.php?15429-Spreadsheets'
+        title: 'Raw Mats Request',
+        description: 'Need some mats? Post here!',
+        url: 'http://www.legend-gaming.net/lgforums/showthread.php?15431-Raw-Material-Request'
       }})
   }
 };
