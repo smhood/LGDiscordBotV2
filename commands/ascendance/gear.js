@@ -22,7 +22,7 @@ module.exports = class GetGearRequest extends Command {
   }
 
   run(msg) {
-      return msg.channel.send(`${msg.author}`,
+      return msg.channel.send('',
       { embed: {
         title: 'Crafting Request',
         description: 'Need some gear made? Post here!',

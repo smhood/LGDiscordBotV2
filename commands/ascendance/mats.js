@@ -22,7 +22,7 @@ module.exports = class GetMatsRequest extends Command {
   }
 
   run(msg) {
-      return msg.channel.send(`${msg.author}`,
+      return msg.channel.send('',
       { embed: {
         title: 'Raw Mats Request',
         description: 'Need some mats? Post here!',

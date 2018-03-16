@@ -23,7 +23,7 @@ module.exports = class GetSpreadsheete extends Command {
   }
 
   run(msg) {
-      return msg.channel.send(`${msg.author}`,
+      return msg.channel.send('',
       { embed: {
         title: 'Kendogg Spreadsheets',
         description: 'All your Crowfall Needs!',
