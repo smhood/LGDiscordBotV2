@@ -54,7 +54,6 @@ client.registry
     estTime.setHours(utcTime-5); // adjust it for EST hours.
     
     if(process.env.ENV === "DEV"){
-      console.log('Checked Reset at ' + estTime);
       return;
     }
     else{
