@@ -27,7 +27,7 @@ module.exports = class GetSpreadsheete extends Command {
       { embed: {
         title: 'Kendogg Spreadsheets',
         description: 'All your Crowfall Needs!',
-        url: 'https://drive.google.com/drive/folders/1ZV6_mZEtG7BRBRyCVEAQ0YanPgAagnlQ'
+        url: 'https://drive.google.com/drive/folders/178vOFyl6EMBOe7zg75Uj5Q4KNQNjaU7A'
       }})
   }
 };
